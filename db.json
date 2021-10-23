@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Learn JS",
+      "author": "Albert",
+      "Likes": 300,
+      "shares": 700
+    },
+    {
+      "id": 2,
+      "title": "Learn DOM",
+      "author": "Albert",
+      "Likes": 200,
+      "shares": 100
+    },
+    {
+      "id": 3,
+      "title": "Learn CSS",
+      "author": "Nurpul",
+      "Likes": 500,
+      "shares": 700
+    },
+    {
+      "id": 4,
+      "title": "Learn HTML",
+      "author": "Nurpul",
+      "Likes": 200,
+      "shares": 500
+    }
+  ],
+  "tasks": [],
+  "comment": []
+}

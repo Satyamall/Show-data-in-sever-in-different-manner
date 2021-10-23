@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="file" id="file"/>
+    <img id="image" width="200" height="200"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript">
+       const file = document.getElementById("file");
+       file.addEventListener("change",function(){
+        //    console.log(event.target.files)
+            const file = event.target.files[0];
+            const url = URL.createObjectURL(event.target.files[0])
+
+            const img = document.getElementById("image")
+            img.src = url
+       })
+    </script>
+
+    <script type="text/javascript">
+       let _sort = "asc";
+       let search = "q";
+       let author = "Albert";
+       let category = "personal";
+       
+      /** 
+       * params: {title?,id?,author?,_page?,_sort?}
+       * output: ?title=&id=&author=&_page=&_sort
+       *  **/
+       function createQuery(params){
+        //    let url = ""
+           let url = new URLSearchParams()
+        //    console.log(params)
+           for(let key in params){
+            //    url += !url?`?${key}=${params[key]}`: `&${key}=${params[key]}`;
+                url.set(key,params[key])
+           }
+           console.log(url.toString())
+           return url.toString()
+       }
+
+       //   console.log(createQuery({author: "Albert", id:1, _page:1,_sort="asc"}))
+       function getPosts(params){
+        //    const url = "http://localhost:3002/posts?"+createQuery(params);
+        //    return fetch(url)
+        //    .then(res=>res.json())
+            const url = "http://localhost:3002/posts?";
+            return axios.get(url,{
+                params
+            }) 
+       }
+       
+       getPosts({_page:1})
+       .then(res=>{
+           console.log(res)
+       })
+
+       
+    </script>
+</body>
+</html>
